@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog & Insights | Ashish Web Solutions</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        body {
+            font-family: 'Outfit', sans-serif;
+            background-color: #09090b;
+            color: #e4e4e7;
+            overflow-x: hidden;
+        }
+        
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #09090b; }
+        ::-webkit-scrollbar-thumb { background: #3f3f46; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #f97316; }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 0.9s cubic-bezier(0.5, 0, 0, 1);
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .blog-item {
+            transition: all 0.4s ease-in-out;
+            transform: scale(1);
+            opacity: 1;
+        }
+        .blog-item.hide {
+            transform: scale(0.9);
+            opacity: 0;
+            display: none;
+        }
+    </style>
+</head>
+<body class="antialiased selection:bg-orange-500 selection:text-white">
+
+    <header class="fixed top-0 left-0 w-full z-50 transition-all duration-300 backdrop-blur-md bg-black/60 border-b border-white/10" id="navbar">
+        <div class="max-w-7xl mx-auto px-6 lg:px-12">
+            <div class="flex justify-between items-center h-20">
+                <div class="flex-shrink-0 flex items-center cursor-pointer">
+                    <a href="index.html" class="text-2xl md:text-3xl font-extrabold tracking-widest uppercase flex items-center gap-1 group">
+                        <span class="text-white group-hover:text-gray-300 transition-colors">Ashish</span>
+                        <span class="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-orange-600">Studio</span>
+                    </a>
+                </div>
+                <nav class="hidden md:flex space-x-6 lg:space-x-10 items-center">
+                    <a href="index.html" class="text-gray-300 hover:text-white px-1 py-2 text-sm font-semibold tracking-wider uppercase transition-colors relative group">Home</a>
+                    <a href="about.html" class="text-gray-300 hover:text-white px-1 py-2 text-sm font-semibold tracking-wider uppercase transition-colors relative group">About</a>
+                    <a href="services.html" class="text-gray-300 hover:text-white px-1 py-2 text-sm font-semibold tracking-wider uppercase transition-colors relative group">Services</a>
+                    <a href="portfolio.html" class="text-gray-300 hover:text-white px-1 py-2 text-sm font-semibold tracking-wider uppercase transition-colors relative group">Portfolio</a>
+                    <a href="blog.html" class="text-orange-500 px-1 py-2 text-sm font-semibold tracking-wider uppercase relative group">Blog</a>
+                    <a href="contact.html" class="text-gray-300 hover:text-white px-1 py-2 text-sm font-semibold tracking-wider uppercase transition-colors relative group">Contact</a>
+                </nav>
+                <div class="hidden md:flex items-center">
+                    <a href="contact.html" class="bg-orange-500 text-black hover:bg-orange-400 px-6 py-2.5 rounded-full text-xs font-bold tracking-widest uppercase transition-all duration-300 shadow-[0_0_15px_rgba(249,115,22,0.4)] hover:shadow-[0_0_25px_rgba(249,115,22,0.6)] hover:-translate-y-0.5">Get Quote</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section class="pt-32 pb-24 relative overflow-hidden bg-black border-b border-white/5">
+        <div class="absolute top-0 right-0 w-[500px] h-[500px] bg-orange-600/10 rounded-full blur-[150px] pointer-events-none"></div>
+        <div class="max-w-7xl mx-auto px-6 lg:px-12 relative z-10 text-center reveal">
+            <h1 class="text-5xl md:text-7xl font-extrabold tracking-tight text-white mb-6">
+                Insights, Tips & <span class="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-orange-600">Latest Trends</span>
+            </h1>
+            <p class="max-w-3xl mx-auto text-xl md:text-2xl text-gray-400 font-light leading-relaxed mb-10">
+                Explore expert articles on Web Development, SEO, Digital Marketing, UI/UX and Technology.
+            </p>
+        </div>
+    </section>
+
+    <section id="blog-content" class="py-12 bg-zinc-950 relative z-10 border-b border-white/5 sticky top-0 z-40 backdrop-blur-xl bg-zinc-950/80">
+        <div class="max-w-7xl mx-auto px-6 lg:px-12">
+            <div class="flex flex-col lg:flex-row justify-between items-center gap-6">
+                <div class="w-full lg:w-1/3 relative reveal">
+                    <input type="text" id="searchInput" placeholder="Search Blogs..." class="w-full bg-zinc-900 border border-white/10 text-white px-5 py-3 rounded-full focus:outline-none focus:border-orange-500 focus:ring-1 focus:ring-orange-500 transition-all placeholder-gray-500">
+                </div>
+                <div class="w-full lg:w-2/3 flex flex-wrap justify-center lg:justify-end gap-3 reveal delay-100">
+                    <button class="filter-btn active px-5 py-2 rounded-full border border-orange-500 bg-orange-500 text-black font-bold text-xs uppercase tracking-widest transition-all" data-filter="all">All</button>
+                    <button class="filter-btn px-5 py-2 rounded-full border border-white/10 bg-transparent text-gray-400 hover:text-white font-bold text-xs uppercase tracking-widest transition-all" data-filter="web-dev">Web Dev</button>
+                    <button class="filter-btn px-5 py-2 rounded-full border border-white/10 bg-transparent text-gray-400 hover:text-white font-bold text-xs uppercase tracking-widest transition-all" data-filter="seo">SEO</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-16 bg-zinc-950 relative z-10 border-t border-white/5">
+        <div class="max-w-7xl mx-auto px-6 lg:px-12">
+            <h2 class="text-sm font-bold tracking-widest text-orange-500 uppercase mb-8 reveal">Latest Articles</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="blog-grid">
+                </div>
+            
+            <div id="no-results" class="hidden text-center py-12">
+                <h4 class="text-2xl font-bold text-white mb-2">No blogs found</h4>
+                <p class="text-gray-400">Try adjusting your search or category filter.</p>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-black border-t border-white/5 pt-16 pb-8 text-center">
+        <p class="text-gray-600 text-sm">© 2026 Ashish Web Solutions. All rights reserved.</p>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.2/papaparse.min.js"></script>
+    
+    <script>
+        // AAPKA GOOGLE SHEET CSV LINK
+        const GOOGLE_SHEET_CSV_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vRH2yH709LAwF4N6xTiqI91WGikcWqw49QFr7_gZjuSH2kqli9Vd3_duAUIcYa4RDGvWKsxl9OhLA5_/pub?output=csv";
+
+        const blogGrid = document.getElementById('blog-grid');
+        const noResults = document.getElementById('no-results');
+        const searchInput = document.getElementById('searchInput');
+        const filterBtns = document.querySelectorAll('.filter-btn');
+
+        if (blogGrid) {
+            blogGrid.innerHTML = '<p class="text-white text-center w-full col-span-3">Loading blogs from Google Sheets...</p>';
+
+            Papa.parse(GOOGLE_SHEET_CSV_URL, {
+                download: true,
+                header: true,
+                complete: function(results) {
+                    const blogsDatabase = results.data;
+                    let cardsHTML = '';
+
+                    blogsDatabase.forEach(blog => {
+                        if (blog.id && blog.id.trim() !== "") {
+                            const filterCategory = blog.category ? blog.category.toLowerCase().replace(' ', '-') : '';
+                            
+                            cardsHTML += `
+                                <div class="glass-card rounded-2xl overflow-hidden group hover:-translate-y-2 transition-all duration-300 reveal blog-item" data-category="${filterCategory}">
+                                    <div class="relative aspect-[16/10] overflow-hidden">
+                                        <img src="${blog.image}" alt="${blog.title}" class="w-full h-full object-cover transform group-hover:scale-105 transition-all duration-700">
+                                        <div class="absolute top-4 left-4 px-3 py-1 bg-black/80 backdrop-blur-md text-orange-500 border border-white/10 text-xs font-bold uppercase tracking-widest rounded-full">${blog.category}</div>
+                                    </div>
+                                    <div class="p-6">
+                                        <h4 class="text-xl font-bold text-white mb-3 group-hover:text-orange-400 transition-colors blog-title">${blog.title}</h4>
+                                        <p class="text-gray-400 text-sm mb-6 line-clamp-2">${blog.shortDesc}</p>
+                                        <div class="flex items-center text-gray-500 text-xs mb-4 space-x-3">
+                                            <span>${blog.date}</span>
+                                            <span>•</span>
+                                            <span>${blog.readTime}</span>
+                                        </div>
+                                        <a href="single-blog.html?id=${blog.id}" class="inline-flex items-center text-orange-500 font-bold text-xs uppercase tracking-widest hover:text-white transition-colors">Read More →</a>
+                                    </div>
+                                </div>
+                            `;
+                        }
+                    });
+
+                    blogGrid.innerHTML = cardsHTML;
+
+                    // Animations Trigger
+                    setTimeout(() => {
+                        const observer = new IntersectionObserver((entries) => {
+                            entries.forEach(entry => {
+                                if (entry.isIntersecting) entry.target.classList.add('active');
+                            });
+                        });
+                        document.querySelectorAll('.reveal').forEach((el) => observer.observe(el));
+                    }, 100);
+
+                    // Search aur Filter Logic
+                    const filterBlogs = () => {
+                        const searchTerm = searchInput.value.toLowerCase();
+                        const activeFilter = document.querySelector('.filter-btn.active').getAttribute('data-filter');
+                        let gridVisibleCount = 0;
+                        const blogItems = document.querySelectorAll('.blog-item');
+
+                        blogItems.forEach(item => {
+                            const category = item.getAttribute('data-category');
+                            const title = item.querySelector('.blog-title').innerText.toLowerCase();
+                            
+                            const matchesCategory = (activeFilter === 'all' || category === activeFilter);
+                            const matchesSearch = title.includes(searchTerm);
+
+                            if (matchesCategory && matchesSearch) {
+                                item.classList.remove('hide');
+                                gridVisibleCount++;
+                            } else {
+                                item.classList.add('hide');
+                            }
+                        });
+
+                        if (gridVisibleCount === 0) {
+                            noResults.classList.remove('hidden');
+                        } else {
+                            noResults.classList.add('hidden');
+                        }
+                    };
+
+                    filterBtns.forEach(btn => {
+                        btn.addEventListener('click', () => {
+                            filterBtns.forEach(b => {
+                                b.classList.remove('bg-orange-500', 'text-black', 'border-orange-500');
+                                b.classList.add('bg-transparent', 'text-gray-400', 'border-white/10');
+                            });
+                            btn.classList.remove('bg-transparent', 'text-gray-400', 'border-white/10');
+                            btn.classList.add('bg-orange-500', 'text-black', 'border-orange-500');
+                            filterBlogs();
+                        });
+                    });
+
+                    searchInput.addEventListener('input', filterBlogs);
+                }
+            });
+        }
+    </script>
+</body>
+</html>
