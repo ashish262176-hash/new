@@ -1,0 +1,141 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:'Poppins',sans-serif;
+    background:#050505;
+    min-height:100vh;
+}
+
+/* Premium Glass Header */
+.glass-header{
+    position:fixed;
+    top:20px;
+    left:50%;
+    transform:translateX(-50%);
+    width:95%;
+    z-index:99999;
+
+    background:rgba(20,20,20,0.80);
+    backdrop-filter:blur(20px);
+    -webkit-backdrop-filter:blur(20px);
+
+    border:1px solid rgba(255,255,255,0.08);
+    border-radius:20px;
+
+    box-shadow:
+    0 10px 40px rgba(0,0,0,0.4),
+    0 0 20px rgba(255,107,0,0.15);
+}
+
+/* Header Layout */
+.container{
+    max-width:1400px;
+    margin:auto;
+    padding:18px 35px;
+
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+}
+
+/* Logo */
+.logo{
+    text-decoration:none;
+    font-size:32px;
+    font-weight:800;
+    letter-spacing:2px;
+    text-transform:uppercase;
+
+    background:linear-gradient(135deg,#ff6b00,#ffb700);
+
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+}
+
+/* Navigation */
+.nav-menu ul{
+    display:flex;
+    align-items:center;
+    gap:35px;
+    list-style:none;
+}
+
+.nav-menu a{
+    text-decoration:none;
+    color:#fff;
+    font-weight:500;
+    position:relative;
+    transition:0.3s;
+}
+
+.nav-menu a::after{
+    content:'';
+    position:absolute;
+    left:0;
+    bottom:-6px;
+    width:0;
+    height:2px;
+    background:#ff8c00;
+    transition:0.4s;
+}
+
+.nav-menu a:hover::after{
+    width:100%;
+}
+
+.nav-menu a:hover{
+    color:#ffb700;
+}
+
+/* Button */
+.header-btn{
+    text-decoration:none;
+    color:#fff;
+    padding:12px 28px;
+    border-radius:50px;
+    font-weight:600;
+
+    background:linear-gradient(135deg,#ff6b00,#ffb700);
+
+    transition:0.3s;
+}
+
+.header-btn:hover{
+    transform:translateY(-3px);
+}
+
+/* Header Space */
+.page-top-space{
+    height:120px;
+}
+
+/* Mobile */
+@media(max-width:991px){
+
+    .container{
+        padding:15px 20px;
+    }
+
+    .nav-menu{
+        display:none;
+    }
+
+    .logo{
+        font-size:26px;
+    }
+
+    .header-btn{
+        padding:10px 20px;
+        font-size:14px;
+    }
+}
